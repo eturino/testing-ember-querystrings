@@ -1,0 +1,24 @@
+<h1>TEAM-TIME PAGE: {{page}}</h1>
+
+<ul>
+  {{#each model as |m|}}
+    <li>{{m}}</li>
+  {{/each}}
+</ul>
+
+<ul>
+  {{#each (range 1 3) as |index|}}
+    <li class="{{if (eq page index) 'active'}}">
+      {{#link-to (query-params page=index)}}{{index}}{{/link-to}}
+    </li>
+  {{/each}}
+</ul>
+
+<select id="team" name="team" onchange={{route-action 'changeTeam'}}>
+  <option selected={{not team}}></option>
+  {{#each teams as |t|}}
+    <option selected={{eq team t}}>{{t}}</option>
+  {{/each}}
+</select>
+
+{{outlet}}

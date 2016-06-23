@@ -7,6 +7,11 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('articles');
+  this.route('client', function() {
+    this.route('team', function() {
+      this.route('time', { path: 'time/:timeString' });
+    });
+  });
 });
 
 export default Router;
